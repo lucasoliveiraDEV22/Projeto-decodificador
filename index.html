@@ -22,6 +22,8 @@
         <textarea
           name="input-text"
           class="input-text"
+          cols="39"
+          rows="4"
           placeholder="Digite seu texto"
         ></textarea>
         <div class="main_alert_span">
@@ -37,25 +39,29 @@
           </button>
         </div>
       </section>
-      <section class="main__container__message">
-        <img src="/assets/no-message-img.svg" alt="no-message-img" />
+      <section class="main_container_message">
+        <img
+          src="/assets/no-message-img.svg"
+          alt="no-message-img"
+          class="img"
+        />
         <div class="area_msg">
           <h2>Nenhuma mensagem encontrada</h2>
-          <p class="texto_message">
+          <p class="text_message">
             Digite um texto que você deseja criptografar ou descriptografar.
           </p>
         </div>
-        <!-- <button class="light-button btn_copiar" id="btn-copiar" onclick="">
-          Copiar
-        </button> -->
+        <textarea class="output-text" cols="20" rows="10"></textarea>
+        <button class="button" id="btn-copiar">copiar</button>
       </section>
+        
     </main>
-
-    <!-- <footer class="footer">
-    <div class="footer__div">
+    <br>
+    <footer class="footer">
+    <div class="footer_class">
       <p><span>&copy;</span> Desenvolvido por Lucas Oliveira - <span id="currentYear"></span></span>
     </div>
-    <div class="rodape__redes-sociais">
+    <div class="footer_socialmedia">
       <a href="https://github.com/lucasoliveiraDEV22" target="_blank"><img src="/assets/github.png"
           alt="github icon">Github</a>
 
@@ -64,6 +70,6 @@
       <a href="https://www.instagram.com/lucas_ti27/" target="_blank"><img src="/assets/instagram.png"
           alt="instagram icon">Instagram</a>
     </div>
-  </footer> -->
+  </footer>
   </body>
 </html>
