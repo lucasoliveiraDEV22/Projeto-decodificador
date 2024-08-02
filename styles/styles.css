@@ -142,11 +142,16 @@ span {
   font-weight: 400;
 }
 
-.output-text {
-  color: #495057;
-  font-weight: 400;
-  line-height: 150%;
+.output {
+  position: relative;
+  
 }
+
+#btn-copiar{
+  position: absolute;
+  right: 20px;
+}
+
 
 .footer {
   display: flex;
