@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Decodificador Challenge</title>
     <link rel="stylesheet" href="styles/styles.css" />
+    <script src="./scripts/script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,10 +32,10 @@
           <span>Apenas letras minúsculas e sem acento.</span>
         </div>
         <div class="main__div__button">
-          <button class="button" id="btn-codificar" onclick="">
+          <button class="button" id="btn-codificar" onclick="btnEncrypt()">
             Criptografar
           </button>
-          <button class="button" id="btn-decodificar" onclick="">
+          <button class="button" id="btn-decodificar" onclick="btnDecrypt()">
             Descriptografar
           </button>
         </div>
@@ -53,15 +54,11 @@
         </div>
         <div class="output">
           <textarea  class="output-text" cols="20" rows="10"></textarea>
-          <button class="button" id="btn-copiar">copiar</button>
+          <button class="button"  id="btn-copiar">Copiar</button>
         </div>
         
       </section>
-      <!-- <section>
-        <textarea  class="output-text" cols="20" rows="10"></textarea>
-        <button class="button" id="btn-copiar">copiar</button>
-      </section> -->
-
+   
         
     </main>
     <br>

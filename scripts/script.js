@@ -1,84 +1,77 @@
-let cont = 0;
+const textArea = document.querySelector('.input-text');
+const message = document.querySelector('.output-text');
+const copyButton = document.getElementById('btn-copiar');
+const noMessageElements = document.querySelector('.main_container_message').children;
+const outputSection = document.querySelector('.output');
+const mainContainerMessage = document.querySelector('.main_container_message');
+const img = document.querySelector('.img');
+const h2 = document.querySelector('.area_msg h2');
+const paragraph = document.querySelector('.text_message');
 
-function criptografar(){
-    let texto = document.querySelector(".texto-de-entrada").value;
-    let letras = texto.split('');
 
-    letras.forEach(function(letra, index){
-        if(letra === 'a'){
-            letras[index] = 'ai';
-        }else if(letra === 'e'){
-            letras[index] = 'enter';
-        }else if(letra === 'i'){
-            letras[index] = 'imes';
-        }else if(letra === 'o'){
-            letras[index] = 'ober';
-        }else if(letra === 'u'){
-            letras[index] = 'ufat';
-        }
-    })
-    limparTextoInput(texto);
-    gerarOutput(letras.join(''));
-    
+const encryptionMatrix = [
+    ['e', 'enter'],
+    ['i', 'imes'],
+    ['a', 'ai'],
+    ['o', 'ober'],
+    ['u', 'ufat']
+];
+
+
+function encrypt(string) {
+    string = string.toLowerCase();
+    encryptionMatrix.forEach(pair => {
+        string = string.replaceAll(pair[0], pair[1]);
+    });
+    return string;
 }
 
-function descriptografar(){
-    let texto = document.querySelector(".texto-de-entrada").value;
-    
-    texto = texto.replaceAll('ai', 'a');
-    texto = texto.replaceAll('enter', 'e');
-    texto = texto.replaceAll('imes', 'i');
-    texto = texto.replaceAll('ober', 'o');
-    texto = texto.replaceAll('ufat', 'u');
-
-    limparTextoInput(texto);
-    gerarOutput(texto);
+function decrypt(string) {
+    string = string.toLowerCase();
+    encryptionMatrix.forEach(pair => {
+        string = string.replaceAll(pair[1], pair[0]);
+    });
+    return string;
 }
 
-function gerarOutput(frase) {
-    let output = document.querySelector('.area-output');
-    let imagem = document.querySelector('.pessoa');
-    let textoPadrao = document.querySelector('.texto-padrao');
-    let textoOutput;
+function btnEncrypt() {
+    const encryptedText = encrypt(textArea.value);
+    message.value = encryptedText;
+    textArea.value = '';
+    toggleVisibility(true);
+}
 
-    if (cont === 0) {
-        imagem.style.display = 'none';
-        textoPadrao.style.display = 'none';
-        output.style.justifyContent = 'space-between';
+function btnDecrypt() {
+    const decryptedText = decrypt(textArea.value);
+    message.value = decryptedText;
+    textArea.value = '';
+    toggleVisibility(true);
+}
 
-        textoOutput = document.createElement('p');
-        textoOutput.classList.add('texto-output');
-        output.appendChild(textoOutput);
-
-        botaoCopiar = document.createElement('button');
-        botaoCopiar.classList.add('botao-copiar');
-        botaoCopiar.innerHTML = 'Copiar';
-        botaoCopiar.addEventListener('click', copiarTexto);
-        output.appendChild(botaoCopiar);
-
-        cont++; 
+function toggleVisibility(isOutputVisible) {
+    if (isOutputVisible) {
+        outputSection.style.display = 'flex';
+        img.style.display = 'none';
+        h2.style.display = 'none';
+        paragraph.style.display = 'none';
     } else {
-        limparTextoOutput();
-        textoOutput = document.querySelector('.texto-output');
+        outputSection.style.display = 'none';
+        img.style.display = 'block';
+        h2.style.display = 'block';
+        paragraph.style.display = 'block';
     }
-    
-    textoOutput.textContent = frase;
 }
 
-function limparTextoInput(){
-    let input = document.querySelector(".texto-de-entrada");
-    input.value = '';
-}
-
-function limparTextoOutput(){
-    let output = document.querySelector('.texto-output');
-    output.textContent = '';
-}
-
-function copiarTexto(){
-    let output = document.querySelector('.texto-output').textContent;
-
-    navigator.clipboard.writeText(output);
-
-    limparTextoOutput();
-}
+document.getElementById('btn-copiar').addEventListener('click', () => {
+    const textToCopy = message.value;
+    if (textToCopy) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            message.value = '';
+            toggleVisibility(false);
+        }).catch(err => {
+            console.error('Erro ao copiar o texto: ', err);
+        });
+    }
+})
+// Inicializa a visibilidade correta ao carregar a página
+toggleVisibility(false);
