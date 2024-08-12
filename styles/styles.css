@@ -43,6 +43,8 @@ header {
   height: 48px;
   margin: 2.5rem 0;
 }
+/*============================================================================*/
+/* Elementos à esquerda*/
 
 .input_area {
   width: 70%;
@@ -115,6 +117,8 @@ span {
   color: var(--main-white-color);
 }
 
+/*============================================================================*/
+/* Elementos à direita */
 .main_container_message {
   width: 460px;
   height: 830px;
